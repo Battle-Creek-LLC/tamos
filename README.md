@@ -40,7 +40,7 @@ TAMOS ships as a Claude Code plugin (the repo is its own marketplace):
 
 ```
 /plugin marketplace add Battle-Creek-LLC/tamos
-/plugin install tamos@tamos
+/plugin install tamos@battle-creek
 ```
 
 Then opt the always-on layer into your global `~/.claude/CLAUDE.md` by import.
