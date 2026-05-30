@@ -1,0 +1,53 @@
+name: validate
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  # Cheap, always-on: structural validation of the plugin manifest and layout.
+  # No API key, no model calls.
+  structure:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Claude Code CLI
+        run: npm install -g @anthropic-ai/claude-code
+      - name: Validate plugin structure
+        run: claude plugin validate . --strict
+
+  # Model-based: runs the five adversarial validators against the guide.
+  # Path-filtered so it only fires when enforced-layer files actually change —
+  # it costs API tokens and a few minutes, so it does not run on every PR.
+  guide-review:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Detect enforced-layer changes
+        id: changed
+        run: |
+          base="${{ github.event.pull_request.base.sha }}"
+          range="${base:+$base..HEAD}"
+          files=$(git diff --name-only ${range:-HEAD~1..HEAD} \
+            -- core.md 'register-*.md' AGENT-STYLE.md 'artifacts/*.md' | tr '\n' ' ')
+          echo "files=$files" >> "$GITHUB_OUTPUT"
+          if [ -n "$files" ]; then echo "run=true" >> "$GITHUB_OUTPUT"; fi
+      - name: Install Claude Code CLI
+        if: steps.changed.outputs.run == 'true'
+        run: npm install -g @anthropic-ai/claude-code
+      - name: Run TAMOS validator suite
+        if: steps.changed.outputs.run == 'true'
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          set -o pipefail
+          claude -p "/tamos-validate ${{ steps.changed.outputs.files }}" \
+            --max-turns 20 | tee result.txt
+          if grep -q 'TAMOS-VALIDATE: FAIL' result.txt; then
+            echo "::error::TAMOS validators found defects in the changed guide files."
+            exit 1
+          fi
+          grep -q 'TAMOS-VALIDATE: PASS' result.txt || {
+            echo "::error::No TAMOS verdict emitted — treating as failure."; exit 1; }

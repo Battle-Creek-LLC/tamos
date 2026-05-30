@@ -1,0 +1,15 @@
+{
+  "name": "tamos",
+  "owner": {
+    "name": "Battle Creek, LLC"
+  },
+  "plugins": [
+    {
+      "name": "tamos",
+      "source": ".",
+      "displayName": "TAMOS — The Agent Manual of Style",
+      "description": "Style guide for prose written to and by agents, with adversarial validators.",
+      "version": "0.1.0"
+    }
+  ]
+}

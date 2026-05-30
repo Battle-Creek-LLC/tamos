@@ -34,11 +34,24 @@ single unit is always a "module".)
 Rationale never goes in the enforced layer. The *why* is for the human
 maintaining the guide and lives in `docs/`.
 
+## Install
+
+TAMOS ships as a Claude Code plugin (the repo is its own marketplace):
+
+```
+/plugin marketplace add jstockdi/tamos
+/plugin install tamos@tamos
+```
+
+Then opt the always-on layer into your global `~/.claude/CLAUDE.md` by import.
+Full steps, CI/CD, and release flow are in `docs/user-guide.md`.
+
 ## Start here
 
 - `docs/principles.md` — the philosophy (two registers, token economy, dogfooding)
 - `docs/structure.md` — the tier cascade, the fixed artifact shape, delivery
 - `docs/runtime.md` — how modules load (pull/skill) and get enforced (hook)
+- `docs/user-guide.md` — install, always-on import, validation, CI/CD, releases
 - `docs/contributing.md` — how to add a new artifact module
 - `AGENT-STYLE.md` — the index/registry of every module
 - `agents/` — adversarial validators that attack this guide for defects
