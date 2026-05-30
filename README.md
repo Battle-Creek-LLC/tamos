@@ -38,6 +38,7 @@ maintaining the guide and lives in `docs/`.
 
 - `docs/principles.md` — the philosophy (two registers, token economy, dogfooding)
 - `docs/structure.md` — the tier cascade, the fixed artifact shape, delivery
+- `docs/runtime.md` — how modules load (pull/skill) and get enforced (hook)
 - `docs/contributing.md` — how to add a new artifact module
 - `AGENT-STYLE.md` — the index/registry of every module
 - `agents/` — adversarial validators that attack this guide for defects

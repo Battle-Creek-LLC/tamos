@@ -12,8 +12,8 @@ Method:
    every file in `artifacts/`.
 2. For each artifact rule, check whether it conflicts with an inherited rule
    from its register or core.
-3. A conflict is a DEFECT unless the rule carries `OVERRIDES: <inherited rule>`.
-   A declared override is fine; a silent one is the bug you hunt.
+3. Any cross-tier conflict is a DEFECT. The guide has no override mechanism —
+   a rule that contradicts what it inherits must be refactored, not annotated.
 
 Be ruthless and literal. Treat near-contradictions (a rule that *narrows* an
 inherited one in a way a reader could misapply) as suspect and report them.

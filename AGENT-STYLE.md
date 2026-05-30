@@ -5,10 +5,9 @@ module and the one rule that binds them.
 
 ## The cascade rule
 
-> A module inherits every rule from the tier above it. A module states only
-> its **delta** — what differs from what it inherits. On conflict, the more
-> specific module wins, **and it must say so explicitly** (`OVERRIDES: <rule>`).
-> A silent contradiction is a bug, not an override.
+> A module inherits every rule from the tier above it and states only its
+> **delta** — what differs from what it inherits. A module must not contradict
+> a rule it inherits; a conflict is a defect to refactor, not to annotate away.
 
 ## Registry
 

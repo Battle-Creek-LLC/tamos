@@ -13,9 +13,9 @@ How to add or change a TAMOS module without breaking the cascade.
    `docs/` note or a comment in your PR, never in the module. If a rule needs a
    *why* to be followed, the why is a paraphrase risk; bake it into the rule
    ("don't X" → "don't X; it breaks Y").
-4. **Declare every override.** If a rule contradicts the register it inherits,
-   write `OVERRIDES: <inherited rule>` on that line. Silent contradictions fail
-   review.
+4. **Never contradict an inherited rule.** If your delta conflicts with the
+   register or core, the inherited rule is wrong or this is the wrong home —
+   refactor, don't carve out an exception.
 5. **Add one row** to the registry table in `AGENT-STYLE.md`.
 6. **Bind delivery.** Note in `APPLIES WHEN` the trigger that loads the module,
    and wire it to the producing skill/tool.

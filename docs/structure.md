@@ -24,10 +24,10 @@ is what keeps the always-on footprint tiny while still giving a precise answer
 for any specific task: the PR-review module is ~15 lines because it does not
 re-litigate citation or hedging — it inherits those.
 
-Conflict resolution: the more specific module wins, **but the override is
-explicit**. A Tier-2 rule that contradicts its register must carry
-`OVERRIDES: <the inherited rule>`. A silent contradiction is a defect — the
-`contradiction-hunter` agent hunts for exactly these.
+A module must not contradict a rule it inherits. If you find yourself needing
+to, that is a signal the inherited rule is wrong or the module is the wrong
+home — refactor, don't annotate the conflict away. The `contradiction-hunter`
+agent treats any cross-tier contradiction as a defect.
 
 ## Delivery binding
 
