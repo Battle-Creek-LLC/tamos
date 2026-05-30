@@ -9,7 +9,7 @@ release.
 The repo is its own marketplace, so one repo gives you both.
 
 ```
-/plugin marketplace add jstockdi/tamos     # or the full git URL
+/plugin marketplace add Battle-Creek-LLC/tamos   # or the full git URL
 /plugin install tamos@tamos
 ```
 

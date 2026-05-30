@@ -9,7 +9,7 @@
       "name": "tamos",
       "source": {
         "source": "github",
-        "repo": "jstockdi/tamos"
+        "repo": "Battle-Creek-LLC/tamos"
       },
       "displayName": "TAMOS — The Agent Manual of Style",
       "description": "Style guide for prose written to and by agents, with adversarial validators.",

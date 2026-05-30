@@ -39,7 +39,7 @@ maintaining the guide and lives in `docs/`.
 TAMOS ships as a Claude Code plugin (the repo is its own marketplace):
 
 ```
-/plugin marketplace add jstockdi/tamos
+/plugin marketplace add Battle-Creek-LLC/tamos
 /plugin install tamos@tamos
 ```
 
