@@ -1,0 +1,42 @@
+# TAMOS — The Agent Manual of Style
+
+A style guide for prose written **to** agents and **by** agents.
+
+Chicago tells one writer how to address one reader. TAMOS governs two
+directions at once: how humans write *to* agents (prompts, specs,
+instructions) and how agents write *back* (reviews, reports, commits, docs).
+Those are different registers with different failure modes, and most bad
+"agent writing" comes from conflating them.
+
+## How TAMOS is organized
+
+A **cascade**. General rules at the top; specialized overrides below; the
+more specific rule wins on conflict.
+
+```
+Tier 0 — CORE          universal invariants, both directions   → core.md
+Tier 1 — REGISTERS     imperative (to agents) / declarative (from agents)
+Tier 2 — ARTIFACTS     per-output deltas (PR review, commit, report…)
+```
+
+A Tier-2 module states only its *delta* over the register it inherits. A
+PR-review style does not re-explain how to cite or hedge — it says only what
+is special about a PR review.
+
+## Two layers, by token cost
+
+| Layer        | Lives in            | Loaded        | Style                       |
+|--------------|---------------------|---------------|-----------------------------|
+| **Enforced** | CLAUDE.md / prompt  | every turn    | terse imperatives, no *why* |
+| **Reference**| this repo           | on demand     | prose, rationale, examples  |
+
+Rationale never goes in the enforced layer. The *why* is for the human
+maintaining the guide and lives here in `docs/`.
+
+## Start here
+
+- `docs/principles.md` — the philosophy (two registers, token economy, dogfooding)
+- `docs/structure.md` — the tier cascade, the fixed artifact shape, delivery
+- `docs/contributing.md` — how to add a new artifact module
+- `AGENT-STYLE.md` — the index/registry of every module
+- `agents/` — adversarial validators that attack this guide for defects
