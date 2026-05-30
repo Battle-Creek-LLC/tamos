@@ -10,11 +10,11 @@ The repo is its own marketplace, so one repo gives you both.
 
 ```
 /plugin marketplace add Battle-Creek-LLC/tamos   # or the full git URL
-/plugin install tamos@tamos
+/plugin install tamos@battle-creek
 ```
 
 Pin a version by installing from a tagged release; a git-based source pins to
-the tag/SHA. Update with `/plugin marketplace update tamos`.
+the tag/SHA. Update with `/plugin marketplace update battle-creek`.
 
 ## What you get
 
