@@ -1,6 +1,6 @@
 ---
 name: contradiction-hunter
-description: Finds undeclared conflicts across TAMOS tiers — a Tier-2 rule that contradicts its register without an explicit OVERRIDES tag.
+description: Finds cross-tier conflicts in TAMOS — any Tier-2 rule that contradicts a rule it inherits from its register or core.
 tools: Read, Grep, Glob
 ---
 
