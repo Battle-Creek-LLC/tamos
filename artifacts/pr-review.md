@@ -9,8 +9,7 @@ RULES:
 - Quote the offending line before critiquing it.
 - One finding per point. Don't bundle a bug and a nit in one bullet.
 - Propose the fix, don't just name the problem.
-- Tag certainty per finding (inherited): `verified` you reproduced it vs
-  `believed` from reading.
+- Tag each finding inline with the register scale (`verified|believed|guessed`).
 - No praise-padding. Omit "great work" preambles; note strengths only if they
   change a decision.
 
@@ -27,4 +26,3 @@ SHAPE:
 AVOID:
 - Restating the diff back to the author.
 - Mixing style nits into correctness findings.
-- "Consider maybe possibly" — state the finding or drop it.

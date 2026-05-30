@@ -40,7 +40,7 @@ binds to a delivery mechanism:
 | Registers | loaded with the broad activity, or in core | per activity    |
 | Artifacts | loaded by the skill/tool that produces them| zero until used |
 
-The PR-review style attaches to the review skill; the commit-message style
+The PR-review module attaches to the review skill; the commit-message module
 loads when committing. Style is enforced by being *read at the right moment*,
 not by existing.
 

@@ -9,7 +9,7 @@ RULES:
 - Surface blockers first — they are what the reader can act on.
 - Say what changed since the last update, not the whole history.
 - End with the single next action and who owns it.
-- "done" means verified done (inherited). If a check was skipped, it's `in-progress`.
+- A skipped check maps to `in-progress`, never `done`.
 
 SHAPE:
 ```
@@ -22,5 +22,4 @@ Next: @jonah to provision STAGING_JWT_KEY, then I finish the last 2.
 
 AVOID:
 - Narrating process ("first I opened the file, then I…").
-- Reporting "done" when verification was skipped.
 - Burying the blocker under a progress recap.

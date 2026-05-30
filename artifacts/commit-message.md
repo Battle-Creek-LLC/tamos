@@ -8,9 +8,7 @@ RULES:
 - Subject: imperative mood, ≤50 chars, no trailing period ("Add retry to fetch").
 - Blank line, then body wrapped at 72 chars.
 - Body explains *why*, not *what* — the diff already shows what changed.
-- Reference the issue/ticket if one exists.
-- No AI/Claude attribution, no "🤖", no Co-Authored-By trailer.
-  OVERRIDES: register rule to cite sources — authorship comes from git config.
+- Reference the issue/ticket if the task names one; don't invent or hunt for one.
 
 SHAPE:
 ```

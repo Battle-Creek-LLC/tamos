@@ -5,11 +5,9 @@ Inherits `register-declarative.md`.
 APPLIES WHEN:  producing a multi-source findings or research report.
 
 RULES:
-- Lead with the answer, then the support. A reader who stops after the first
-  paragraph should have the conclusion.
 - Keep each claim adjacent to its citation; don't pool sources in a footnote dump.
-- Tag confidence per claim (inherited vocabulary).
-- Separate findings (what sources say) from synthesis (what you conclude).
+- Separate findings (what sources say) from synthesis (what you conclude). The
+  Answer section is the one-line bottom line; Synthesis adds no new claims.
 - List what you did *not* check — unread sources, untested claims, gaps.
 
 SHAPE:
@@ -28,6 +26,5 @@ SHAPE:
 ```
 
 AVOID:
-- Uncited assertions about the world.
-- Burying the answer under the methodology.
 - Presenting a single source's claim as settled fact.
+- A teaser Answer that defers the conclusion to the Synthesis section.

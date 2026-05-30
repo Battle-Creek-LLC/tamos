@@ -19,9 +19,10 @@ Tier 1 — REGISTERS     imperative (to agents) / declarative (from agents)
 Tier 2 — ARTIFACTS     per-output deltas (PR review, commit, report…)
 ```
 
-A Tier-2 module states only its *delta* over the register it inherits. A
-PR-review style does not re-explain how to cite or hedge — it says only what
-is special about a PR review.
+A Tier-2 module states only its *delta* over the register it inherits. The
+PR-review module does not re-explain how to cite or hedge — it says only what
+is special about a PR review. ("Style" names the discipline as a whole; a
+single unit is always a "module".)
 
 ## Two layers, by token cost
 
@@ -31,7 +32,7 @@ is special about a PR review.
 | **Reference**| this repo           | on demand     | prose, rationale, examples  |
 
 Rationale never goes in the enforced layer. The *why* is for the human
-maintaining the guide and lives here in `docs/`.
+maintaining the guide and lives in `docs/`.
 
 ## Start here
 

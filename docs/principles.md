@@ -1,9 +1,8 @@
 # Principles
 
-The reasoning behind TAMOS. This is reference-layer prose — it is *not*
-loaded into an agent's context at run time. Its job is to justify the terse
-rules in `core.md` and the registers, so a maintainer can edit them without
-guessing at intent.
+Five ideas justify every terse rule in the enforced layer. Reference-layer
+prose: not loaded at run time, written so a maintainer can edit the rules
+without guessing at intent.
 
 ## 1. Two registers, never conflated
 
