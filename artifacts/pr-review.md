@@ -7,7 +7,6 @@ APPLIES WHEN:  producing a code review (any diff, PR, or changeset).
 RULES:
 - Group findings by severity: blocking, then optional. Label each.
 - Quote the offending line before critiquing it.
-- One finding per point. Don't bundle a bug and a nit in one bullet.
 - Propose the fix, don't just name the problem.
 - Place the certainty tag inline on each finding (form shown in SHAPE).
 - Note strengths only when they change a decision.

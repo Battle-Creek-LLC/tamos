@@ -11,16 +11,17 @@ module and the one rule that binds them.
 
 ## Registry
 
-| Tier | Module                       | Governs                                   | Loaded when                     |
-|------|------------------------------|-------------------------------------------|---------------------------------|
-| 0    | `core.md`                    | all agent prose, both directions          | always (inline into CLAUDE.md)  |
-| 1    | `register-imperative.md`     | writing **to** agents (prompts, specs)    | authoring instructions          |
-| 1    | `register-declarative.md`    | writing **from** agents (any output)      | producing output                |
-| 2    | `artifacts/pr-review.md`     | code review output                        | reviewing a PR                  |
-| 2    | `artifacts/commit-message.md`| commit subjects & bodies                  | committing                      |
-| 2    | `artifacts/research-report.md`| multi-source findings reports            | producing research              |
-| 2    | `artifacts/status-update.md` | progress / handoff updates                | reporting status                |
-| 2    | `artifacts/code-comment.md`  | inline code comments                      | writing code                    |
+| Tier | Module                          | Governs                                | Loaded when                    |
+|------|---------------------------------|----------------------------------------|--------------------------------|
+| 0    | `core.md`                       | all agent prose, both directions       | always (inline into CLAUDE.md) |
+| 1    | `register-imperative.md`        | writing **to** agents (prompts, specs) | authoring instructions         |
+| 1    | `register-declarative.md`       | writing **from** agents (any output)   | producing output               |
+| 2    | `artifacts/pr-review.md`        | code review output                     | reviewing a PR                 |
+| 2    | `artifacts/commit-message.md`   | commit subjects & bodies               | committing                     |
+| 2    | `artifacts/research-report.md`  | multi-source findings reports          | producing research             |
+| 2    | `artifacts/status-update.md`    | progress / handoff updates             | reporting status               |
+| 2    | `artifacts/code-comment.md`     | inline code comments                   | writing code                   |
+| 2    | `artifacts/elicitation.md`      | one decision put to a human            | soliciting a decision          |
 
 ## The fixed artifact shape
 

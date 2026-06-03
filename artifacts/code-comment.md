@@ -5,8 +5,8 @@ Inherits `register-declarative.md`.
 APPLIES WHEN:  writing an inline comment in source code.
 
 RULES:
-- Comment the *why*, not the *what*. The code already says what.
-- Delete a comment that restates its line. Redundant comments rot.
+- Comment the *why*, not the *what*.
+- Delete a comment that restates its line.
 - A `TODO` carries an owner and a condition ("TODO(jonah): remove after v2 ships").
 - Match the surrounding comment density and idiom; don't over-annotate.
 - Note the non-obvious: invariants, gotchas, why the obvious approach was rejected.

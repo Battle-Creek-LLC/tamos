@@ -1,9 +1,9 @@
 # Runtime
 
-The static structure (tiers, cascade, the four-slot shape) says *what* the
-rules are. The runtime says *how they reach an agent's context at the moment it
-writes, and how compliance is checked* — without it, TAMOS is a binder no one
-opens at the keyboard.
+The runtime gets the rules into an agent's context as it writes and checks that
+it complied — without it, TAMOS is a binder no one opens at the keyboard. The
+static structure (tiers, cascade, the four-slot shape) says *what* the rules
+are; the runtime says *how* they apply.
 
 ## The one decision
 
