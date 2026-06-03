@@ -17,6 +17,7 @@ module and the one rule that binds them.
 | 1    | `register-imperative.md`     | writing **to** agents (prompts, specs)    | authoring instructions          |
 | 1    | `register-declarative.md`    | writing **from** agents (any output)      | producing output                |
 | 2    | `artifacts/pr-review.md`     | code review output                        | reviewing a PR                  |
+| 2    | `artifacts/spec-review.md`   | spec requirements-quality review          | reviewing a spec                |
 | 2    | `artifacts/commit-message.md`| commit subjects & bodies                  | committing                      |
 | 2    | `artifacts/research-report.md`| multi-source findings reports            | producing research              |
 | 2    | `artifacts/status-update.md` | progress / handoff updates                | reporting status                |
