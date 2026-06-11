@@ -23,6 +23,7 @@ module and the one rule that binds them.
 | 2    | `artifacts/status-update.md`    | progress / handoff updates             | reporting status               |
 | 2    | `artifacts/code-comment.md`     | inline code comments                   | writing code                   |
 | 2    | `artifacts/elicitation.md`      | one decision put to a human            | soliciting a decision          |
+| 2    | `artifacts/tldr.md`             | compressing prose to terse structure   | summarizing existing output    |
 
 ## The fixed artifact shape
 
