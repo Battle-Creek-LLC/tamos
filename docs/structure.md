@@ -10,7 +10,7 @@ Tier 0 — CORE          always-on, tiny, universal invariants
 Tier 1 — REGISTERS     imperative (human→agent) · declarative (agent→human)
             │ inherits
 Tier 2 — ARTIFACTS     per-output deltas: pr-review, commit-message,
-                       research-report, status-update, code-comment …
+                       research-report, status-update, code-comment, tldr …
 ```
 
 Each tier is narrower and longer-lived than the one below it. Core changes

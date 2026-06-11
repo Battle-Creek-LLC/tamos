@@ -22,6 +22,7 @@ the tag/SHA. Update with `/plugin marketplace update battle-creek`.
 |-----------|--------------|-------|
 | 5 adversarial validators (`agents/`) | plugin subagents (auto-discovered) | when you run validation |
 | `/tamos-validate` (`commands/`) | slash command | on demand / in CI |
+| `tldr` (`skills/`) | producing skill (pulls `artifacts/tldr.md`) | when compressing prose |
 | style modules (`core`, registers, `artifacts/`) | reference files in the plugin | pulled by producing skills |
 
 > A plugin does **not** auto-inject text into your CLAUDE.md. The always-on
