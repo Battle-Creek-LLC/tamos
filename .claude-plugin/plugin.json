@@ -1,7 +1,7 @@
 {
   "name": "tamos",
   "displayName": "TAMOS — The Agent Manual of Style",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A style guide for prose written to and by agents: a cascade of always-on invariants, registers, and per-artifact modules, plus adversarial validators that keep the guide honest.",
   "author": {
     "name": "Battle Creek, LLC"
