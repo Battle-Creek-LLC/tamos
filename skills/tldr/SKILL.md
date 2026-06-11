@@ -1,6 +1,6 @@
 ---
 name: tldr
-description: Compress a wordy message or output into a terse, scannable TL;DR (headings, tables, bullets) without losing decision-relevant content. Use when asked to summarize, condense, "tl;dr", or shorten existing prose.
+description: Compress a wordy message or output into a terse, scannable TL;DR (tables, bullets) without losing decision-relevant content. Use when asked to summarize, condense, "tl;dr", or shorten existing prose.
 ---
 
 Produce a TL;DR of wordy input.
