@@ -53,7 +53,9 @@ turns this on. Two packaging traps, both silent:
   The unwrapped form parses, passes `claude plugin validate --strict`, and never runs.
 - Do **not** also declare `"hooks": "./hooks/hooks.json"` in `plugin.json`.
   `hooks/hooks.json` is auto-discovered; declaring it as well loads the hook at
-  runtime but reports `✘ failed to load` in `claude plugin list`. An earlier version asked the user to `@import` them into
+  runtime but reports `✘ failed to load` in `claude plugin list`.
+
+An earlier version asked the user to `@import` the three always-on files into
 `~/.claude/CLAUDE.md` using `${CLAUDE_PLUGIN_ROOT}`. That never worked — the
 variable is expanded for hook commands, not for CLAUDE.md imports — so the
 always-on layer silently loaded nothing. Measured recall of the wanted artifact
