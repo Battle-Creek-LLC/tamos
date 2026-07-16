@@ -47,7 +47,13 @@ declarative rules and core invariants always apply, and the registry is how an
 agent discovers which artifact module to pull next. Nothing else is always-on.
 
 `hooks/hooks.json` cats the three files at session start; installing the plugin
-turns this on. An earlier version asked the user to `@import` them into
+turns this on. Two packaging traps, both silent:
+
+- The file must wrap its events in a `hooks` key — `{"hooks": {"SessionStart": …}}`.
+  The unwrapped form parses, passes `claude plugin validate --strict`, and never runs.
+- Do **not** also declare `"hooks": "./hooks/hooks.json"` in `plugin.json`.
+  `hooks/hooks.json` is auto-discovered; declaring it as well loads the hook at
+  runtime but reports `✘ failed to load` in `claude plugin list`. An earlier version asked the user to `@import` them into
 `~/.claude/CLAUDE.md` using `${CLAUDE_PLUGIN_ROOT}`. That never worked — the
 variable is expanded for hook commands, not for CLAUDE.md imports — so the
 always-on layer silently loaded nothing. Measured recall of the wanted artifact
