@@ -1,6 +1,6 @@
 ---
 name: research-report
-description: Produce a multi-source findings report. Use when asked to research, investigate, or report on a topic drawing on several sources.
+description: Produce a research report. Use when asked to research, investigate, or report on a topic drawing on several sources.
 ---
 
 ## Step 0 — pull the rules
