@@ -12,7 +12,8 @@ RULES:
 - One finding per defect. Cite the spec section (`§"<heading>"`) it occurred in.
 - Tag each finding with its lens AND the rule it breaks: a 29148 characteristic
   (`unambiguous`, `complete`, `consistent`, `verifiable`, `feasible`, `traceable`, …)
-  or a named TAMOS rule (`specificity`, `communicate through structure`, …).
+  or a TAMOS rule in its exact wording (`"One name per thing"`, `"Answer first,
+  evidence after"`).
 - Quote the offending spec text before critiquing it.
 - Propose a concrete rewrite, not just the problem. A rewrite you suggest MUST itself
   conform to TAMOS.
@@ -32,7 +33,7 @@ Found <n> issues:
 2. [Conflict] §"<section>" — contradicts <artifact-id> (accepted): <what it says>.
    Propose an amend/supersede before activating. (29148: conforming) [verified]
 
-3. [Style/TAMOS] §"<section>" — <defect>. Suggest: <rewrite>. (TAMOS: <rule>)
+3. [Style/TAMOS] §"<section>" — <defect>. Suggest: <rewrite>. (TAMOS: "<rule as written>")
 ```
 
 Clean pass:
