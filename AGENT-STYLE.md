@@ -13,17 +13,20 @@ module and the one rule that binds them.
 
 | Tier | Module                          | Governs                                | Loaded when                    |
 |------|---------------------------------|----------------------------------------|--------------------------------|
-| 0    | `core.md`                       | all agent prose, both directions       | always (inline into CLAUDE.md) |
+| 0    | `core.md`                       | all agent prose, both directions       | always (SessionStart hook)     |
 | 1    | `register-imperative.md`        | writing **to** agents (prompts, specs) | authoring instructions         |
-| 1    | `register-declarative.md`       | writing **from** agents (any output)   | producing output               |
+| 1    | `register-declarative.md`       | writing **from** agents (any output)   | always (SessionStart hook)     |
 | 2    | `artifacts/pr-review.md`        | code review output                     | reviewing a PR                 |
 | 2    | `artifacts/spec-review.md`      | spec requirements-quality review       | reviewing a spec               |
 | 2    | `artifacts/commit-message.md`   | commit subjects & bodies               | committing                     |
 | 2    | `artifacts/research-report.md`  | multi-source findings reports          | producing research             |
 | 2    | `artifacts/status-update.md`    | progress / handoff updates             | reporting status               |
-| 2    | `artifacts/code-comment.md`     | inline code comments                   | writing code                   |
+| 2    | `artifacts/code-comment.md`     | inline code comments                   | asked for a comment            |
 | 2    | `artifacts/elicitation.md`      | one decision put to a human            | soliciting a decision          |
 | 2    | `artifacts/tldr.md`             | compressing prose to terse structure   | summarizing existing output    |
+
+Each module `artifacts/<name>.md` loads as the skill `<name>`; `/tamos:<name>`
+loads it directly. Vocabulary and measured reliability: `docs/use-cases.md`.
 
 ## The fixed artifact shape
 
@@ -36,14 +39,7 @@ SHAPE:         one skeleton of the finished artifact
 AVOID:         the 2–3 anti-patterns specific to this artifact
 ```
 
-## Engaging a module
-
-Every Tier-2 module ships as a producing skill of the same name. Name the
-artifact and the skill loads it; `/tamos:<module>` invokes it directly. TAMOS is
-deliberately invoked — it does not fire on ordinary conversation. See
-`docs/use-cases.md` for the vocabulary and measured reliability.
-
 ## Adding a module
 
-See `docs/contributing.md`. New row here, new file under `artifacts/`,
-nothing more.
+See `docs/contributing.md`. New row here, new `artifacts/<name>.md`, new
+skill `skills/<name>/SKILL.md`.

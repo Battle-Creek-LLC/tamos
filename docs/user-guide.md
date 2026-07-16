@@ -54,10 +54,10 @@ Do **not** copy these files into each project's CLAUDE.md — that re-creates th
 drift TAMOS exists to prevent. See `docs/runtime.md` for the full
 provisioning/enforcement model.
 
-The layer costs roughly +20% tokens and a few seconds on every turn, including
-turns that have nothing to do with TAMOS. That is the rent for calibrated prose
-on every output. To opt out, disable the hook in `hooks/hooks.json` and invoke
-modules deliberately (see below) — routing still works, at ~78% instead of ~84%.
+The layer costs roughly +$0.03 and +1s per turn, including turns that have
+nothing to do with TAMOS. That is the rent for calibrated prose on every output.
+To opt out, disable the hook in `hooks/hooks.json`; the skills still load their
+modules on request. Routing numbers: `docs/use-cases.md`.
 
 ## Pull an artifact module
 

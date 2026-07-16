@@ -37,6 +37,28 @@ jobs:
       - name: Install Claude Code CLI
         if: steps.changed.outputs.run == 'true'
         run: npm install -g @anthropic-ai/claude-code
+      - name: Wire this checkout's command + validators into the session
+        if: steps.changed.outputs.run == 'true'
+        # /tamos-validate and agents/ ship in this repo as plugin components, but
+        # the plugin is not installed here — so the command was unknown and the job
+        # failed before reaching a verdict. Stage them as project-local instead,
+        # which also means the PR's own validators judge the PR's own changes.
+        run: |
+          mkdir -p .claude
+          cp -r commands .claude/commands
+          cp -r agents .claude/agents
+      - name: Fail fast if the API key is missing
+        if: steps.changed.outputs.run == 'true'
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        # Without this the job dies with an opaque "no verdict" error, which is how
+        # guide-review stayed red on every enforced-layer PR without anyone noticing.
+        run: |
+          if [ -z "$ANTHROPIC_API_KEY" ]; then
+            echo "::error::ANTHROPIC_API_KEY is not set (repo Settings -> Secrets)."
+            echo "::error::guide-review cannot run. See docs/user-guide.md -> CI/CD."
+            exit 1
+          fi
       - name: Run TAMOS validator suite
         if: steps.changed.outputs.run == 'true'
         env:
@@ -44,7 +66,7 @@ jobs:
         run: |
           set -o pipefail
           claude -p "/tamos-validate ${{ steps.changed.outputs.files }}" \
-            --max-turns 20 | tee result.txt
+            --max-turns 20 --permission-mode bypassPermissions | tee result.txt
           if grep -q 'TAMOS-VALIDATE: FAIL' result.txt; then
             echo "::error::TAMOS validators found defects in the changed guide files."
             exit 1

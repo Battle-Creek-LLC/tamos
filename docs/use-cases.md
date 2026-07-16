@@ -1,8 +1,10 @@
 # Use cases — what TAMOS governs, and how to engage it
 
-TAMOS is **deliberately invoked, not magic**. You name the artifact you want and
-the module loads; you talk about something else and it stays out of your way.
-That boundary is the design, and this page is the vocabulary that sits on it.
+**Ask for an artifact and its module loads. Ask for anything else and it stays
+out.** The line is drawn on *intent*, not on phrasing: "anything wrong with
+this?" engages `pr-review` as reliably as "review this PR", while "shorten the
+timeout to 5s" engages nothing, because it is a code edit rather than a request
+for prose. This page is the vocabulary that sits on that line.
 
 Two things are always on once the plugin is installed, with no words required:
 
@@ -67,8 +69,8 @@ Speak normally. Oblique asks land as reliably as jargon; only triggers buried
 mid-task after other work still slip occasionally. If you want a module for
 certain, name it or use `/tamos:<module>`.
 
-The precision side of the trade holds: TAMOS never fired on "shorten the timeout
-to 5s" or "why is my commit failing" across 16 decoy sessions. It engages when you
+The precision side of the trade holds: across 16 decoy sessions TAMOS did not
+fire on "shorten the timeout to 5s" or "why is my commit failing". It engages when you
 ask for an artifact and stays out otherwise.
 
 ## Known gap — comments the agent writes on its own
@@ -84,8 +86,9 @@ by the always-on layer, not by `artifacts/code-comment.md`.
 
 ## What TAMOS deliberately ignores
 
-It stays out of ordinary conversation. Verified over 64 sessions of decoys, zero
-false fires:
+It stays out of asks that aren't for an artifact. Verified over 80 decoy
+sessions — 16 on the shipped plugin, 64 across the configurations tested to get
+there — with zero false fires in every one:
 
 - "shorten the timeout to 5 seconds" — a code edit, not a `tldr`
 - "why is my commit failing?" — debugging, not a `commit-message`
