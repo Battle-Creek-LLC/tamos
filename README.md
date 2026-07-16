@@ -51,7 +51,8 @@ Full steps, CI/CD, and release flow are in `docs/user-guide.md`.
 - `docs/principles.md` — the philosophy (two registers, token economy, dogfooding)
 - `docs/structure.md` — the tier cascade, the fixed artifact shape, delivery
 - `docs/runtime.md` — how modules load (pull/skill) and get enforced (hook)
-- `docs/user-guide.md` — install, always-on import, validation, CI/CD, releases
+- `docs/user-guide.md` — install, the always-on layer, validation, CI/CD, releases
+- `CHANGELOG.md` — releases, and how to upgrade + verify
 - `docs/contributing.md` — how to add a new artifact module
 - `AGENT-STYLE.md` — the index/registry of every module
 - `docs/use-cases.md` — what each module governs and the words that engage it

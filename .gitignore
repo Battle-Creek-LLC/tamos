@@ -1,0 +1,15 @@
+# Experiment scratch. The method, fixtures, harness and findings are tracked so
+# the measurements cited in docs/ resolve for anyone who clones. The raw model
+# transcripts are not: they are large, regenerable by re-running the harness, and
+# their per-cell caching means a stale file silently substitutes for a real run.
+
+.exp/**/results/
+.exp/**/results2/
+.exp/routing/rows*.json
+.exp/routing/arena/
+
+# J7 (tldr efficacy) predates the tracked-experiment convention and stays local.
+.exp/tldr/
+.exp/tldr_b/
+.exp/tldr_c/
+.exp/experiments.db

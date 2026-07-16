@@ -1,0 +1,7 @@
+{
+  "hooks": {
+    "SessionStart": [
+      { "hooks": [ { "type": "command", "command": "cat /Users/jstockdi/projects/bcl/tamos/core.md /Users/jstockdi/projects/bcl/tamos/register-declarative.md /Users/jstockdi/projects/bcl/tamos/AGENT-STYLE.md" } ] }
+    ]
+  }
+}

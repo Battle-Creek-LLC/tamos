@@ -1,0 +1,8 @@
+{
+  "tldr_explicit":  {"want":"tldr", "prompt":"tl;dr this: The quarterly report indicates revenue grew 12% to 4.2M, while headcount stayed flat at 45. Churn ticked up to 3.1% from 2.8%, which the team attributes to the March pricing change."},
+  "tldr_natural":   {"want":"tldr", "prompt":"can you shorten this down for me? The quarterly report indicates revenue grew 12% to 4.2M, while headcount stayed flat at 45. Churn ticked up to 3.1% from 2.8%, which the team attributes to the March pricing change."},
+  "tldr_summarize": {"want":"tldr", "prompt":"summarize: The quarterly report indicates revenue grew 12% to 4.2M, while headcount stayed flat at 45. Churn ticked up to 3.1% from 2.8%, attributed to the March pricing change."},
+  "commit_natural": {"want":"commit-message", "prompt":"write me a commit message for this diff:\n--- a/auth.py\n+++ b/auth.py\n@@\n-    token = jwt.decode(t, verify=False)\n+    token = jwt.decode(t, key, algorithms=['HS256'])"},
+  "review_natural": {"want":"pr-review", "prompt":"review this change:\n--- a/pay.py\n+++ b/pay.py\n@@\n-def charge(amt):\n-    return api.post('/charge', {'amt': amt})\n+def charge(amt):\n+    return api.post('/charge', {'amt': amt, 'idem': None})"},
+  "status_natural": {"want":"status-update", "prompt":"give me a status update on the auth migration: I moved 3 of 5 endpoints to the new token flow. The staging secret isn't provisioned so I can't test /refresh yet."}
+}

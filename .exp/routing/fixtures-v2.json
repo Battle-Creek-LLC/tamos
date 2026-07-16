@@ -1,0 +1,48 @@
+{
+  "_doc": "J9 prompt corpus. want=<module> means that module SHOULD load. want=null means NOTHING should load (negative control). register: jargon|natural|oblique|embedded. embedded fixtures carry a `pre` turn that does real work first, so the trigger arrives mid-task the way it does in pairing.",
+
+  "_positive_tldr": "--------------------------------------------------",
+  "tldr_jargon":    {"want":"tldr", "register":"jargon",  "prompt":"tl;dr this:\n\nThe Q3 planning doc lands us in a reasonable place. Revenue grew 12% to $4.2M against a 9% target, though headcount stayed flat at 45 which is why per-head productivity looks better than it is. Churn ticked up to 3.1% from 2.8%; the team attributes this to the March pricing change but we have not isolated it. The infra migration completed Tuesday. Two security findings from the pen test are patched. The mobile app slipped to October."},
+  "tldr_natural":   {"want":"tldr", "register":"natural",  "prompt":"can you shorten this down for me?\n\nThe Q3 planning doc lands us in a reasonable place. Revenue grew 12% to $4.2M against a 9% target, though headcount stayed flat at 45 which is why per-head productivity looks better than it is. Churn ticked up to 3.1% from 2.8%; the team attributes this to the March pricing change but we have not isolated it. The infra migration completed Tuesday. Two security findings from the pen test are patched. The mobile app slipped to October."},
+  "tldr_oblique":   {"want":"tldr", "register":"oblique",  "prompt":"this is way too long, I just need the gist:\n\nThe Q3 planning doc lands us in a reasonable place. Revenue grew 12% to $4.2M against a 9% target, though headcount stayed flat at 45 which is why per-head productivity looks better than it is. Churn ticked up to 3.1% from 2.8%; the team attributes this to the March pricing change but we have not isolated it. The infra migration completed Tuesday. Two security findings from the pen test are patched. The mobile app slipped to October."},
+  "tldr_embedded":  {"want":"tldr", "register":"embedded", "pre":"Read README.md and explain in detail what this project is, its structure, and its philosophy. Be thorough.", "prompt":"ok that's a lot — condense it for me"},
+
+  "_positive_commit": "--------------------------------------------------",
+  "commit_jargon":   {"want":"commit-message", "register":"jargon",  "prompt":"write a commit message for this diff:\n--- a/auth.py\n+++ b/auth.py\n@@\n-    token = jwt.decode(t, verify=False)\n+    token = jwt.decode(t, key, algorithms=['HS256'])"},
+  "commit_natural":  {"want":"commit-message", "register":"natural", "prompt":"what should I call this commit?\n--- a/auth.py\n+++ b/auth.py\n@@\n-    token = jwt.decode(t, verify=False)\n+    token = jwt.decode(t, key, algorithms=['HS256'])"},
+  "commit_oblique":  {"want":"commit-message", "register":"oblique", "prompt":"ok this is ready to go in — I need the message for it:\n--- a/auth.py\n+++ b/auth.py\n@@\n-    token = jwt.decode(t, verify=False)\n+    token = jwt.decode(t, key, algorithms=['HS256'])"},
+  "commit_embedded": {"want":"commit-message", "register":"embedded", "pre":"Create a file util.py containing a single function slugify(s) that lowercases and hyphenates a string.", "prompt":"good — now write the commit message for that (don't run git)"},
+
+  "_positive_review": "--------------------------------------------------",
+  "review_jargon":   {"want":"pr-review", "register":"jargon",  "prompt":"review this change:\n--- a/pay.py\n+++ b/pay.py\n@@\n-def charge(amt):\n-    return api.post('/charge', {'amt': amt})\n+def charge(amt):\n+    return api.post('/charge', {'amt': amt, 'idem': None})"},
+  "review_natural":  {"want":"pr-review", "register":"natural", "prompt":"can you look at this and tell me if it's ok?\n--- a/pay.py\n+++ b/pay.py\n@@\n-def charge(amt):\n-    return api.post('/charge', {'amt': amt})\n+def charge(amt):\n+    return api.post('/charge', {'amt': amt, 'idem': None})"},
+  "review_oblique":  {"want":"pr-review", "register":"oblique", "prompt":"anything wrong with this?\n--- a/pay.py\n+++ b/pay.py\n@@\n-def charge(amt):\n-    return api.post('/charge', {'amt': amt})\n+def charge(amt):\n+    return api.post('/charge', {'amt': amt, 'idem': None})"},
+  "review_embedded": {"want":"pr-review", "register":"embedded", "pre":"Create cache.py with a get_or_set(key, fn) that stores results in a module-level dict with no size limit and no expiry.", "prompt":"now go back over what you just wrote and give me your honest take on it"},
+
+  "_positive_status": "--------------------------------------------------",
+  "status_jargon":   {"want":"status-update", "register":"jargon",  "prompt":"give me a status update on the auth migration: I moved 3 of 5 endpoints to the new token flow. The staging secret isn't provisioned so I can't test /refresh yet."},
+  "status_natural":  {"want":"status-update", "register":"natural", "prompt":"where are we on the auth migration? I moved 3 of 5 endpoints to the new token flow. The staging secret isn't provisioned so I can't test /refresh yet."},
+  "status_oblique":  {"want":"status-update", "register":"oblique", "prompt":"I'm handing the auth migration to Dana tomorrow — write up where things stand. I moved 3 of 5 endpoints to the new token flow. The staging secret isn't provisioned so I can't test /refresh yet."},
+
+  "_positive_other": "--------------------------------------------------",
+  "elicit_natural":  {"want":"elicitation", "register":"natural", "prompt":"I can't decide: should the hub links be per-firm configurable, or do we hardcode one set for everyone? Which way should we go?"},
+  "elicit_oblique":  {"want":"elicitation", "register":"oblique", "prompt":"per-firm configurable hub links, or one hardcoded set? A or B?"},
+  "comment_natural": {"want":"code-comment", "register":"natural", "prompt":"add a comment explaining why this retry loop is here:\n\ndef fetch(url):\n    for i in range(3):\n        try:\n            return http.get(url, timeout=2)\n        except Timeout:\n            sleep(2 ** i)\n    raise"},
+  "specrev_jargon":  {"want":"spec-review", "register":"jargon", "prompt":"review this spec for requirements quality:\n\n## Notifications\nThe system should notify users quickly when something important happens. Notifications must be reliable and should not be annoying. Users can configure their preferences."},
+
+  "_negative_controls": "---- want=null: lexical decoys. NOTHING should load. ----",
+  "neg_summarize_code": {"want":null, "why":"'summarize' but explaining code, not compressing prose", "prompt":"summarize what this function does:\n\ndef f(xs):\n    return {k: [x for x in xs if x.k == k] for k in {x.k for x in xs}}"},
+  "neg_shorten_code":   {"want":null, "why":"'shorten' but it's a code edit", "prompt":"shorten the timeout to 5 seconds in this snippet:\n\nhttp.get(url, timeout=30)"},
+  "neg_commit_debug":   {"want":null, "why":"'commit' but it's debugging", "prompt":"why is my commit failing with 'pre-commit hook exited with code 1'? What are the usual causes?"},
+  "neg_review_config":  {"want":null, "why":"'review' but not a diff", "prompt":"review my understanding: does pytest's conftest.py apply to sibling directories or only descendants?"},
+  "neg_status_endpoint":{"want":null, "why":"'status' but it's a code question", "prompt":"is there a conventional path for a health/status endpoint in a REST API? What do most teams use?"},
+  "neg_report_disk":    {"want":null, "why":"'report' but not a research report", "prompt":"write a bash one-liner that reports disk usage per directory, largest first"},
+  "neg_plain_question": {"want":null, "why":"ordinary question, no artifact", "prompt":"what's the difference between a Python list and a tuple?"},
+  "neg_plain_task":     {"want":null, "why":"ordinary coding task", "prompt":"write a python function that validates an email address with a regex"},
+
+  "_pairing": "---- no module governs these today. Baseline for rec D. ----",
+  "pair_findings":  {"want":"__pairing__", "register":"natural", "pre":"Read core.md and register-declarative.md.", "prompt":"what did you find?"},
+  "pair_certainty": {"want":"__pairing__", "register":"natural", "pre":"Read core.md and tell me whether the tldr module contradicts it.", "prompt":"are you sure about that?"},
+  "pair_verify":    {"want":"__pairing__", "register":"natural", "pre":"Create add.py with a function add(a,b) returning a+b.", "prompt":"did that actually work?"},
+  "pair_why":       {"want":"__pairing__", "register":"natural", "pre":"Create add.py with a function add(a,b) returning a+b.", "prompt":"why'd you do it that way?"}
+}
