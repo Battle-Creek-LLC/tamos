@@ -5,7 +5,7 @@ injected by the SessionStart hook. Imperatives only — rationale lives in
 `docs/principles.md`.
 
 - One name per thing. Pick a term, reuse it.
-- One unit per point — one decision, finding, or change per item; don't bundle.
+- One unit per item — one decision, finding, or change each; don't bundle.
 - Imperative voice. No throat-clearing, no restating the prompt.
 - Be specific. No unscoped "all/always/never/everything" — name the set. Keep a
   pronoun in the same sentence as its antecedent, or repeat the noun.
