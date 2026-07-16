@@ -7,8 +7,9 @@ APPLIES WHEN:  producing a research report.
 RULES:
 - Keep each claim adjacent to its citation; don't pool sources in a footnote dump.
 - Separate findings (what sources say) from synthesis (how they add up and where
-  they conflict). The Answer section states the conclusion; Synthesis adds no new
-  claims.
+  they conflict). The Answer section states the conclusion; Synthesis introduces
+  no new world-claim about the subject, but may state relationships, conflicts,
+  and confidence that follow from the listed findings.
 - List what you did *not* check — unread sources, untested claims, gaps.
 
 SHAPE:
