@@ -61,6 +61,41 @@ They never worked — `${CLAUDE_PLUGIN_ROOT}` does not expand in a CLAUDE.md
 
 ---
 
+## v0.4.0
+
+Cleans up the enforced layer. `core.md` and both registers are injected into
+every session by the SessionStart hook, so upgrading changes the always-on rules
+an agent sees — hence the minor bump rather than a patch.
+
+- **Cascade re-litigations removed.** `register-imperative` restated core's
+  example rule and `register-declarative` restated its throat-clearing rule
+  verbatim. Both are inherited; the delta rule forbids repeating them.
+  `spec-review` restated core's one-unit rule, which sibling `pr-review` already
+  omits for the same reason.
+- **Undefined terms scoped.** `spec-review`'s "the confidence threshold"
+  presupposed a bar defined nowhere, leaving the artifact's core filter
+  non-deterministic; it now tags certainty per the register instead of
+  suppressing findings. `register-declarative`'s "governs all agent output" used
+  the bare "all" that core bans and contradicted its own "(agent → human)"
+  subtitle. `register-imperative`'s numbered-block rule silently counted only
+  the highest-priority constraints, so five constraints with two top-priority
+  read as "no block needed".
+- **One name per thing, in the files that define it.** core called the human's
+  input "request" while all four siblings say "prompt", and named its own unit
+  both "point" and "item" one line after banning exactly that. `spec-review`
+  called its id prefix both `sp` and `s-<id>`.
+- **research-report's Answer/Synthesis split fixed** (#13). The conclusion had
+  two homes: Synthesis was glossed as "what you conclude" while AVOID banned
+  deferring the conclusion there. The certainty tag also dropped `guessed`,
+  pressuring a writer to round a guess up to `believed`.
+- **spec-review cites rules by wording** (#14), not by names like `specificity`
+  that exist nowhere in the guide.
+
+Known defects, tracked but not fixed: the validators still report findings across
+the layer on every enforced-layer PR — `guide-review` audits whole files rather
+than the diff, so each run surfaces a different subset of a long-standing
+backlog. See the release discussion for the current list.
+
 ## v0.3.1
 
 Fixes a v0.3.0 install reporting itself broken while working correctly.
