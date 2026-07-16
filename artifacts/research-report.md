@@ -7,7 +7,7 @@ APPLIES WHEN:  producing a multi-source findings or research report.
 RULES:
 - Keep each claim adjacent to its citation; don't pool sources in a footnote dump.
 - Separate findings (what sources say) from synthesis (what you conclude). The
-  Answer section is the one-line bottom line; Synthesis adds no new claims.
+  Answer section states the conclusion; Synthesis adds no new claims.
 - List what you did *not* check — unread sources, untested claims, gaps.
 
 SHAPE:
