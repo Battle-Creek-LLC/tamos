@@ -36,6 +36,13 @@ SHAPE:         one skeleton of the finished artifact
 AVOID:         the 2–3 anti-patterns specific to this artifact
 ```
 
+## Engaging a module
+
+Every Tier-2 module ships as a producing skill of the same name. Name the
+artifact and the skill loads it; `/tamos:<module>` invokes it directly. TAMOS is
+deliberately invoked — it does not fire on ordinary conversation. See
+`docs/use-cases.md` for the vocabulary and measured reliability.
+
 ## Adding a module
 
 See `docs/contributing.md`. New row here, new file under `artifacts/`,

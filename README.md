@@ -54,4 +54,5 @@ Full steps, CI/CD, and release flow are in `docs/user-guide.md`.
 - `docs/user-guide.md` — install, always-on import, validation, CI/CD, releases
 - `docs/contributing.md` — how to add a new artifact module
 - `AGENT-STYLE.md` — the index/registry of every module
+- `docs/use-cases.md` — what each module governs and the words that engage it
 - `agents/` — adversarial validators that attack this guide for defects
