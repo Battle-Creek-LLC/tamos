@@ -61,6 +61,33 @@ They never worked — `${CLAUDE_PLUGIN_ROOT}` does not expand in a CLAUDE.md
 
 ---
 
+## v0.5.0
+
+Scopes the validator gate to what a change actually caused.
+
+- **`/tamos-validate` takes `--base <ref>`.** A finding blocks only when the diff
+  put it there: on a line the diff changed, or caused elsewhere by a rule the
+  diff changed. Everything else prints under `## Pre-existing (advisory)` and
+  never gates. Without `--base`, every finding blocks — the full-layer audit is
+  unchanged.
+
+  The second blocking case is deliberate. A pure diff filter would let an edit to
+  `core.md` collide with an untouched artifact and still pass, and cross-tier
+  cascade consistency is what the guide exists to enforce.
+
+- **Why:** the validators audit whole files, so every enforced-layer PR inherited
+  the layer's entire backlog. v0.4.0's three PRs merged red over defects on lines
+  they never touched, and the same three-line changes took eleven validator
+  rounds.
+- **`docs/user-guide.md` documents the fork-secret trap.** A `pull_request` run
+  from a fork never receives `ANTHROPIC_API_KEY`, so `guide-review` dies on the
+  missing-key check however the secret is set. Push the branch to the repo and
+  open the PR from there. `pull_request_target` would "fix" this by handing the
+  key to fork code, in a job that runs `claude -p --permission-mode
+  bypassPermissions`.
+- A skipped `guide-review` and a passing one both report green. The log tells you
+  which; the docs now say so.
+
 ## v0.4.0
 
 Cleans up the enforced layer. `core.md` and both registers are injected into
