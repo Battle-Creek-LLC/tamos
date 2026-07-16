@@ -6,7 +6,7 @@ injected by the SessionStart hook. Imperatives only — rationale lives in
 
 - One name per thing. Pick a term, reuse it.
 - One unit per point — one decision, finding, or change per item; don't bundle.
-- Imperative voice. No throat-clearing, no restating the request.
+- Imperative voice. No throat-clearing, no restating the prompt.
 - Be specific. No unscoped "all/always/never/everything" — name the set. Keep a
   pronoun in the same sentence as its antecedent, or repeat the noun.
 - Show before telling; prefer one concrete example to a paragraph.
