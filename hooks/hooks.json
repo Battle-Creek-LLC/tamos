@@ -1,0 +1,14 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cat \"${CLAUDE_PLUGIN_ROOT}/core.md\" \"${CLAUDE_PLUGIN_ROOT}/register-declarative.md\" \"${CLAUDE_PLUGIN_ROOT}/AGENT-STYLE.md\""
+          }
+        ]
+      }
+    ]
+  }
+}

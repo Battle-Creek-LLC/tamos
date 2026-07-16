@@ -20,30 +20,44 @@ the tag/SHA. Update with `/plugin marketplace update battle-creek`.
 
 | Component | Delivered as | Loads |
 |-----------|--------------|-------|
+| always-on layer (`core`, `register-declarative`, `AGENT-STYLE`) | `SessionStart` hook | every session, automatically |
+| 8 producing skills (`skills/`) | plugin skills, one per artifact module | when you ask for that artifact |
 | 5 adversarial validators (`agents/`) | plugin subagents (auto-discovered) | when you run validation |
 | `/tamos-validate` (`commands/`) | slash command | on demand / in CI |
-| `tldr` (`skills/`) | producing skill (pulls `artifacts/tldr.md`) | when compressing prose |
-| style modules (`core`, registers, `artifacts/`) | reference files in the plugin | pulled by producing skills |
+| artifact modules (`artifacts/`) | reference files | pulled by the producing skill |
 
-> A plugin does **not** auto-inject text into your CLAUDE.md. The always-on
-> layer is opted in by import (next section). Everything else loads on demand.
+> A plugin cannot inject text into your CLAUDE.md — but its `SessionStart` hook
+> can inject context directly, which is how the always-on layer arrives. Nothing
+> needs hand-editing.
 
-## Turn on the always-on layer
+See `docs/use-cases.md` for what each skill governs and the words that engage it.
+
+## The always-on layer
 
 The enforced layer (`core.md` + `register-declarative.md` + the `AGENT-STYLE.md`
-registry) is the high-ROI piece and applies to every turn. Import it once into
-your **global** `~/.claude/CLAUDE.md` so it lives in one source and edits
-propagate:
+registry) applies to every turn. **Installing the plugin turns it on** — a
+`SessionStart` hook (`hooks/hooks.json`) injects the three files at the start of
+every session. No hand-editing, and it follows plugin updates.
 
-```
-@${CLAUDE_PLUGIN_ROOT}/core.md
-@${CLAUDE_PLUGIN_ROOT}/register-declarative.md
-@${CLAUDE_PLUGIN_ROOT}/AGENT-STYLE.md
-```
+> **Upgrading from 0.2.0 or earlier:** delete these lines from your
+> `~/.claude/CLAUDE.md` — they never worked. `${CLAUDE_PLUGIN_ROOT}` does not
+> expand in a CLAUDE.md `@import`, so they silently loaded nothing:
+> ```
+> @${CLAUDE_PLUGIN_ROOT}/core.md            # <- delete: expands to nothing
+> @${CLAUDE_PLUGIN_ROOT}/register-declarative.md
+> @${CLAUDE_PLUGIN_ROOT}/AGENT-STYLE.md
+> ```
+> The hook replaces them. If you prefer an import, only absolute (`@/abs/path`)
+> or home-relative (`@~/path`) forms resolve.
 
 Do **not** copy these files into each project's CLAUDE.md — that re-creates the
-drift TAMOS exists to prevent. Import, never paste. See `docs/runtime.md` for
-the full provisioning/enforcement model.
+drift TAMOS exists to prevent. See `docs/runtime.md` for the full
+provisioning/enforcement model.
+
+The layer costs roughly +$0.03 and +1s per turn, including turns that have
+nothing to do with TAMOS. That is the rent for calibrated prose on every output.
+To opt out, disable the hook in `hooks/hooks.json`; the skills still load their
+modules on request. Routing numbers: `docs/use-cases.md`.
 
 ## Pull an artifact module
 

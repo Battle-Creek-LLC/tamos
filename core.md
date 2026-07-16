@@ -1,7 +1,8 @@
 # Tier 0 — Core
 
 Universal invariants. Apply to all agent prose, both directions. Always-on;
-inline into CLAUDE.md. Imperatives only — rationale lives in `docs/principles.md`.
+injected by the SessionStart hook. Imperatives only — rationale lives in
+`docs/principles.md`.
 
 - One name per thing. Pick a term, reuse it.
 - One unit per point — one decision, finding, or change per item; don't bundle.

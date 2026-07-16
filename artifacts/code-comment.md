@@ -2,7 +2,7 @@
 
 Inherits `register-declarative.md`.
 
-APPLIES WHEN:  writing an inline comment in source code.
+APPLIES WHEN:  asked for an inline comment in source code.
 
 RULES:
 - Comment the *why*, not the *what*.

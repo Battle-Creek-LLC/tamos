@@ -7,38 +7,56 @@ are; the runtime says *how* they apply.
 
 ## The one decision
 
-> **Provisioning is pull. Enforcement is push.**
-> Getting style *into* context to help an agent write → load on demand
-> (CLAUDE.md or the producing skill). Checking that the agent *followed* it →
-> a deterministic gate (a hook) that fires on the event.
+> **Per-task style is pull. The always-on layer and enforcement are push.**
+> Getting a *specific* artifact's style into context → load on demand (the
+> producing skill). Getting the *universal* layer in, and checking that the agent
+> followed it → a deterministic hook that fires on the event.
 
-Why split them: provisioning wants to be cheap and quiet, so it loads only what
-the current task needs. Enforcement wants to be unskippable, so it can't depend
-on the agent choosing to run it. A hook that *injected* style would fire on
-every tool call and flood context; a skill that *enforced* style could be
-skipped by the agent it's meant to police. Each mechanism does the job the
-other can't.
+Why split them: per-task provisioning wants to be cheap and quiet, so it loads
+only what the current task needs. The always-on layer and enforcement want to be
+unskippable, so neither can depend on the agent choosing to run it. A skill that
+*enforced* style could be skipped by the agent it's meant to police.
+
+The push half is bounded by *which event*. A hook on every tool call would flood
+context, which is why no hook injects per-artifact style. `SessionStart` fires
+once per session, so it can carry the few-hundred-token always-on layer without
+paying per turn — measured at roughly +$0.03 and +1s per turn, on turns where no
+module loads at all.
+
+The earlier version of this doc put the always-on layer under "pull" and asked
+the user to `@import` it into CLAUDE.md. That was the wrong call twice over: the
+import silently didn't work, and provisioning a *universal* layer was never a
+pull problem — nothing about it is task-specific, so there is nothing to decide
+on demand.
 
 ## What loads where
 
 | Module                      | Mechanism                    | When                          |
 |-----------------------------|------------------------------|-------------------------------|
-| `core.md`                   | **CLAUDE.md** (inlined)      | always — every turn           |
-| `register-declarative.md`   | **CLAUDE.md** (inlined)      | always — every turn produces output |
-| `AGENT-STYLE.md` (registry) | **CLAUDE.md** (inlined)      | always — it's the pull map    |
+| `core.md`                   | **SessionStart hook**        | always — every turn           |
+| `register-declarative.md`   | **SessionStart hook**        | always — every turn produces output |
+| `AGENT-STYLE.md` (registry) | **SessionStart hook**        | always — it's the pull map    |
 | `register-imperative.md`    | **skill / pull**             | when authoring a prompt or spec |
-| `artifacts/*.md`            | **skill / pull**             | when producing that artifact  |
+| `artifacts/*.md`            | **same-named skill**         | when producing that artifact  |
 | `agents/*.md` (validators)  | **hook**                     | on commit / pre-merge — as a gate |
 
-### Always-on (CLAUDE.md)
+### Always-on (SessionStart hook)
 Core, the declarative register, and the one-line registry. Together a few
 hundred tokens. They are always-on because *every* turn produces output, so the
 declarative rules and core invariants always apply, and the registry is how an
 agent discovers which artifact module to pull next. Nothing else is always-on.
 
+`hooks/hooks.json` cats the three files at session start; installing the plugin
+turns this on. An earlier version asked the user to `@import` them into
+`~/.claude/CLAUDE.md` using `${CLAUDE_PLUGIN_ROOT}`. That never worked — the
+variable is expanded for hook commands, not for CLAUDE.md imports — so the
+always-on layer silently loaded nothing. Measured recall of the wanted artifact
+module was 34%; with the hook and the per-module skills it is 97%
+(`docs/use-cases.md`).
+
 ### Pull / skill-loaded (provisioning)
 Artifact modules and the imperative register load only when their work starts.
-The producing skill `Read`s its module as step 0 — the `battle-review` skill
+The producing skill `Read`s its module as step 0 — the `pr-review` skill
 opens `artifacts/pr-review.md` before drafting; a commit flow opens
 `artifacts/commit-message.md`. Where no skill owns the action, the agent pulls
 it itself: consult the registry, match `APPLIES WHEN`, open the module. Cost is
