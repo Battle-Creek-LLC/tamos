@@ -75,7 +75,13 @@ Run the five adversarial validators against the enforced layer:
 ```
 /tamos-validate                      # all enforced-layer files
 /tamos-validate artifacts/pr-review.md   # a specific file
+/tamos-validate artifacts/pr-review.md --base main   # only what the diff caused
 ```
+
+With `--base <ref>`, a finding blocks only if the diff put it there: on a changed
+line, or caused elsewhere by a rule the diff changed. Everything else prints
+under `## Pre-existing (advisory)` without failing the run. Without `--base`,
+every finding blocks.
 
 It prints a per-validator summary and a final `TAMOS-VALIDATE: PASS|FAIL` line.
 Run this whenever you edit `core.md`, a register, or an artifact module — that
@@ -89,12 +95,21 @@ Two workflows under `.github/workflows/`:
   - `structure` — `claude plugin validate . --strict`. Cheap, no API key.
   - `guide-review` — runs `/tamos-validate` on changed enforced-layer files
     only. Costs API tokens and a few minutes, so it is path-filtered and skips
-    PRs that don't touch the guide.
+    PRs that don't touch the guide. It passes `--base`, so a PR fails only on
+    defects it introduced; the layer's pre-existing findings print as advisory.
+    A skipped run and a passing run both report green — check the log for which
+    you got.
 - **`release.yml`** (on a `v*` tag): validates structure, checks the tag matches
   `plugin.json` `version`, and publishes a GitHub release.
 
 **Required secret:** `ANTHROPIC_API_KEY` (repo settings → Secrets) for the
 `guide-review` job. The structural and release validation steps don't need it.
+
+**Fork PRs cannot run `guide-review`.** GitHub withholds repo secrets from
+`pull_request` runs originating from a fork, so the key reads empty however it is
+set and the job fails on the missing-key check. Push the branch to this repo and
+open the PR from here. Do not reach for `pull_request_target` — it hands the key
+to fork code, and this job runs `claude -p --permission-mode bypassPermissions`.
 
 If you'd rather not spend tokens in CI, delete the `guide-review` job and run
 `/tamos-validate` locally before pushing — the structural gate still protects
