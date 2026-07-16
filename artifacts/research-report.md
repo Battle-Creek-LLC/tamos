@@ -6,10 +6,12 @@ APPLIES WHEN:  producing a research report.
 
 RULES:
 - Keep each claim adjacent to its citation; don't pool sources in a footnote dump.
-- Separate findings (what sources say) from synthesis (how they add up and where
-  they conflict). The Answer section states the conclusion. Every Synthesis
-  sentence must name the findings it rests on; if it asserts something no listed
-  finding states, move it to Findings with its own citation.
+- Separate Findings (what sources say) from Synthesis (how they add up and where
+  they conflict).
+- State the conclusion in Answer.
+- Combine, weigh, and contrast the listed Findings in Synthesis.
+- Move any sentence whose evidence sits in no Findings bullet into Findings, with
+  its own citation.
 - List what you did *not* check — unread sources, untested claims, gaps.
 
 SHAPE:
