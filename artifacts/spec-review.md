@@ -2,14 +2,14 @@
 
 Inherits `register-declarative.md`.
 
-APPLIES WHEN:  producing a requirements-quality review of a specification (an `sp`
-spec, an SRS/design-doc markdown file, or the spec-shaped changes in a diff).
+APPLIES WHEN:  producing a requirements-quality review of a specification (an
+`s-<id>` spec, an SRS/design-doc markdown file, or the spec-shaped changes in a diff).
 
 RULES:
 - Open with the spec id and title; close nothing else onto that line.
-- Surface only findings at or above the confidence threshold. State what you checked
-  and what you dropped — never round a partial pass up to "clean".
-- One finding per defect. Cite the spec section (`§"<heading>"`) it occurred in.
+- Tag each finding's certainty per the register rather than suppressing it for
+  being a guess. State what you checked and what you dropped.
+- Cite the spec section (`§"<heading>"`) each finding occurred in.
 - Tag each finding with its lens AND the rule it breaks: a 29148 characteristic
   (`unambiguous`, `complete`, `consistent`, `verifiable`, `feasible`, `traceable`, …)
   or a named TAMOS rule (`specificity`, `communicate through structure`, …).
