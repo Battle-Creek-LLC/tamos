@@ -10,8 +10,8 @@ RULES:
   they conflict).
 - State the conclusion in Answer.
 - Combine, weigh, and contrast the listed Findings in Synthesis.
-- Move any sentence whose evidence sits in no Findings bullet into Findings, with
-  its own citation.
+- Move a Synthesis sentence into Findings, under a citation of its own, when no
+  Findings bullet carries the evidence that sentence rests on.
 - List what you did *not* check — unread sources, untested claims, gaps.
 
 SHAPE:
