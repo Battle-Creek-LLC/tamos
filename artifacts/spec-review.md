@@ -9,7 +9,7 @@ RULES:
 - Open with the spec id and title; close nothing else onto that line.
 - Tag each finding's certainty per the register rather than suppressing it for
   being a guess. State what you checked and what you dropped.
-- One finding per defect. Cite the spec section (`§"<heading>"`) it occurred in.
+- Cite the spec section (`§"<heading>"`) each finding occurred in.
 - Tag each finding with its lens AND the rule it breaks: a 29148 characteristic
   (`unambiguous`, `complete`, `consistent`, `verifiable`, `feasible`, `traceable`, …)
   or a named TAMOS rule (`specificity`, `communicate through structure`, …).

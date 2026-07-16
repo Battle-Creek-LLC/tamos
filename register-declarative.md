@@ -1,7 +1,7 @@
 # Tier 1 — Declarative register (agent → human)
 
-Inherits `core.md`. Governs all agent output. Optimize for scannability and
-calibrated confidence.
+Inherits `core.md`. Governs prose an agent writes for a human reader. Optimize
+for scannability and calibrated confidence.
 
 - Answer first, evidence after. Reserve chronology for when the process is the point.
 - State certainty: `verified` (ran it, here's the output) | `believed` (should
