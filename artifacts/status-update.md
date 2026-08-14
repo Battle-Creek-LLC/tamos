@@ -9,7 +9,8 @@ RULES:
 - Surface blockers first — they are what the reader can act on.
 - Say what changed since the last update, not the whole history.
 - End with the single next action and who owns it.
-- A skipped check maps to `in-progress`, never `done`.
+- The state label carries certainty here, not a tag: a skipped check maps to
+  `in-progress`, never `done`.
 
 SHAPE:
 ```

@@ -84,6 +84,33 @@ enforced-layer PR keep inheriting the whole backlog anyway.
 - `docs/user-guide.md` records that `README.md` and `docs/` sit outside the
   target list, so changes there get no verdict.
 
+## Unreleased
+
+Every artifact module now declares how its artifact shows certainty. Both
+changed rules are hook-injected, so this moves the always-on set.
+
+- **The certainty rule names a default and lets the module declare otherwise.**
+  `State certainty: verified | believed | guessed` was written against
+  agent→developer output, where every artifact shipped so far lands. Read
+  literally it demands a tag on every sentence, and four modules never satisfied
+  it: `commit-message`, `code-comment`, `tldr` and `status-update` ship SHAPEs
+  with no tag and declared no alternative.
+- **Two of those four already had a mechanism; it just wasn't named.**
+  `status-update`'s "a skipped check maps to `in-progress`, never `done`" is a
+  certainty mechanism, and `tldr`'s "add no claim the source didn't state" means
+  it carries the source's certainty unchanged. Both now say so.
+- **The other two get one.** A commit body distinguishes what was measured from
+  what was inferred; an uncertain claim in a comment becomes a `TODO` with its
+  condition, which the module already requires an owner and condition for.
+- **Citations take a module-declared form.** `file:line, URL, or command output`
+  has no realization in every artifact, and `core.md` makes citations a required
+  slot, so the rule was unsatisfiable wherever those three forms don't exist.
+- **Why now:** #18 adds `proposal`, the first artifact addressed to a reader
+  outside the working session. Six attempts to resolve this with a Tier-1
+  condition — on the reader, on the commitment, on the claim class — each failed
+  `guide-review` differently, because the discriminator is the artifact type and
+  only a module can name that. See #21.
+
 ## v0.5.0
 
 Scopes the validator gate to what a change actually caused.
