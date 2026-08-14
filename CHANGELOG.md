@@ -61,6 +61,29 @@ They never worked — `${CLAUDE_PLUGIN_ROOT}` does not expand in a CLAUDE.md
 
 ---
 
+## Unreleased
+
+Fixes the validator gate. v0.5.0 scoped it to the diff; two holes let an
+enforced-layer PR keep inheriting the whole backlog anyway.
+
+- **A finding outside a changed line now has to fail against the base.** The old
+  test blocked any finding citing a rule the diff changed. Every module inherits
+  `core.md` and both registers, so editing one put all nine modules in citing
+  range and re-opened the layer's standing findings — the exact failure v0.5.0
+  set out to fix. The test is now: read the cited rule as the base has it; if the
+  finding still stands, it pre-dates the PR.
+- **Only a high-severity blocking finding gates.** The old wording also counted
+  "a validator's FAIL verdict resting on a blocking finding", which cancelled the
+  severity threshold — the validators are adversarial and return FAIL whenever
+  they find anything, so a low-severity finding gated the same as a high one. One
+  run reported "32 findings blocking but below the high-severity threshold, so
+  they do not gate" and then emitted FAIL.
+- **Severity is defined.** Each validator was inventing its own scale. `high`
+  now requires naming the wrong artifact an agent would emit; two available
+  readings alone are `medium`.
+- `docs/user-guide.md` records that `README.md` and `docs/` sit outside the
+  target list, so changes there get no verdict.
+
 ## v0.5.0
 
 Scopes the validator gate to what a change actually caused.

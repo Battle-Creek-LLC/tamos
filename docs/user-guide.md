@@ -79,13 +79,24 @@ Run the five adversarial validators against the enforced layer:
 ```
 
 With `--base <ref>`, a finding blocks only if the diff put it there: on a changed
-line, or caused elsewhere by a rule the diff changed. Everything else prints
-under `## Pre-existing (advisory)` without failing the run. Without `--base`,
-every finding blocks.
+line, or — tested against `<ref>` — no longer standing once the rule it cites is
+read as `<ref>` has it. Everything else prints under `## Pre-existing (advisory)`
+without failing the run. Only a blocking finding at **high** severity fails the
+run; a validator's own FAIL verdict does not, since each returns FAIL whenever it
+finds anything. Without `--base`, every finding blocks.
+
+The `<ref>` test is what makes a register edit tractable. Every module inherits
+`core.md` and both registers, so changing one puts all nine in citing range;
+without the test, any enforced-layer PR re-inherits the layer's whole backlog —
+the failure v0.5.0 set out to fix and only half fixed.
 
 It prints a per-validator summary and a final `TAMOS-VALIDATE: PASS|FAIL` line.
-Run this whenever you edit `core.md`, a register, or an artifact module — that
-is the only time the validators need to run.
+Run this whenever you edit `core.md`, a register, `AGENT-STYLE.md`, or an
+artifact module — that is the only time the validators need to run.
+
+`README.md` and `docs/` are outside the target list, so a PR that changes them
+alongside the enforced layer gets no verdict on those files. `dogfood-inspector`
+still reads them and will report what it finds, as advisory.
 
 ## CI/CD
 
