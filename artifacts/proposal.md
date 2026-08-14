@@ -2,22 +2,23 @@
 
 Inherits `register-declarative.md`.
 
-APPLIES WHEN:  asking a buyer to commission scoped work.
+APPLIES WHEN:  writing or revising a document that asks a buyer to commission
+scoped work.
 
 RULES:
-- Mark certainty as `firm` or `estimate` on the date and the price, and put any
-  claim you can't stand behind in Assumptions.
+- Mark certainty this way, in place of tags: `firm` or `estimate` on the date
+  and the price, and an Assumptions entry for any claim you can't stand behind.
 - Put the buyer's time in one table as person-hours, totalled; a process step
-  may repeat a row's hours and may not add any.
+  repeats a row's hours and adds none.
 - Name each buyer-supplied input under "What I need from you" with what happens
   to scope if it doesn't arrive.
 - Add a Risks entry for each buyer-supplied input whose late arrival moves the
   delivery date.
-- Name who performs each step under "The process"; a step no person performs
-  names none.
-- Where the source material gives no price, date, duration, person-hours, buyer,
-  or deliverable, leave a `{{TOKEN}}` naming the gap.
-- State one total price; a schedule that sums to it is part of that price.
+- Name who performs each step under "The process"; name no actor for a step no
+  person performs.
+- Leave a `{{TOKEN}}` naming any value the source material doesn't give; a token
+  in a table row carries into that table's total.
+- State one total price; count a schedule that sums to it as part of that price.
 - Put a second priced engagement in a second proposal.
 
 SHAPE:
@@ -38,7 +39,7 @@ SHAPE:
 | Your commitment | Person-hours |
 |---|---|
 | <item> | <n>h |
-| **Total** | **<n>h** |
+| **Total** | **<n>h, plus any row's token** |
 
 ### The process
 - **<step>** — <who does what> *(your time: <n>h, if the step uses any)*
