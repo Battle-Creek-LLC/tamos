@@ -98,11 +98,12 @@ they were written for. Both are hook-injected, so this changes the always-on set
   `elicitation` and `research-report` tag findings — the claims a reader acts on.
   The rule now says that, and an artifact addressed outside the session expresses
   an uncertain claim as a stated assumption instead of a tag.
-- **Citations take a prose source outside the session.** `file:line, URL, or
-  command output` have no realization in a document sent to a client, and
-  `core.md` makes citations a required slot, so the rule was unsatisfiable there
-  — the agent either leaks `notes/kickoff.md:18` to the reader or silently drops
-  a required slot.
+- **Citations take a prose source where the reader can't open the locator.**
+  `file:line, URL, or command output` have no realization in a document sent to
+  a client, and `core.md` makes citations a required slot, so the rule was
+  unsatisfiable there — the agent either leaks `notes/kickoff.md:18` to the
+  reader or silently drops a required slot. A PR review is unaffected: its reader
+  can open `file:line`.
 - **Why now:** #18 adds `proposal`, the first artifact addressed to a third
   party. Four attempts to resolve this inside that module failed `guide-review`
   in four different ways, and the validators twice prescribed fixing it here
