@@ -63,53 +63,28 @@ They never worked — `${CLAUDE_PLUGIN_ROOT}` does not expand in a CLAUDE.md
 
 ## Unreleased
 
-Fixes the validator gate. v0.5.0 scoped it to the diff; two holes let an
-enforced-layer PR keep inheriting the whole backlog anyway.
+Lets an artifact module name its own way of showing certainty.
 
-- **A finding outside a changed line now has to fail against the base.** The old
-  test blocked any finding citing a rule the diff changed. Every module inherits
-  `core.md` and both registers, so editing one put all nine modules in citing
-  range and re-opened the layer's standing findings — the exact failure v0.5.0
-  set out to fix. The test is now: read the cited rule as the base has it; if the
-  finding still stands, it pre-dates the PR.
-- **Only a high-severity blocking finding gates.** The old wording also counted
-  "a validator's FAIL verdict resting on a blocking finding", which cancelled the
-  severity threshold — the validators are adversarial and return FAIL whenever
-  they find anything, so a low-severity finding gated the same as a high one. One
-  run reported "32 findings blocking but below the high-severity threshold, so
-  they do not gate" and then emitted FAIL.
-- **Severity is defined.** Each validator was inventing its own scale. `high`
-  now requires naming the wrong artifact an agent would emit; two available
-  readings alone are `medium`.
-- `docs/user-guide.md` records that `README.md` and `docs/` sit outside the
-  target list, so changes there get no verdict.
-
-## Unreleased
-
-Every artifact module now declares how its artifact shows certainty. Both
-changed rules are hook-injected, so this moves the always-on set.
-
-- **The certainty rule names a default and lets the module declare otherwise.**
-  `State certainty: verified | believed | guessed` was written against
-  agent→developer output, where every artifact shipped so far lands. Read
-  literally it demands a tag on every sentence, and four modules never satisfied
-  it: `commit-message`, `code-comment`, `tldr` and `status-update` ship SHAPEs
-  with no tag and declared no alternative.
-- **Two of those four already had a mechanism; it just wasn't named.**
-  `status-update`'s "a skipped check maps to `in-progress`, never `done`" is a
-  certainty mechanism, and `tldr`'s "add no claim the source didn't state" means
-  it carries the source's certainty unchanged. Both now say so.
-- **The other two get one.** A commit body says what was measured, what was
-  inferred, and what remains unverified; a comment states what the code and its
-  contract support and routes anything it could not check into a `TODO(owner)`
-  naming the check that would settle it.
-- **`docs/contributing.md` gains a step**, so the next module declares its
-  mechanism rather than inheriting the gap.
-- **Why now:** #18 adds `proposal`, the first artifact addressed to a reader
-  outside the working session. Six attempts to resolve this with a Tier-1
-  condition — on the reader, on the commitment, on the claim class — each failed
+- **The certainty rule names a default and permits an alternative.** `State
+  certainty: verified | believed | guessed` was written against agent→developer
+  output, where every artifact TAMOS ships today lands. Read literally it demands
+  a tag on every claim, and four modules never satisfied it: `commit-message`,
+  `code-comment`, `tldr` and `status-update` ship SHAPEs with no tag. A module
+  may now name a different form in a RULES line; a module that names none keeps
+  the tags, so nothing about those four changes here.
+- **Why:** #18 adds `proposal`, the first artifact addressed to a reader outside
+  the working session, where a `[guessed]` tag on a quoted price reads as the
+  author hedging their own price. Six attempts to resolve that with a Tier-1
+  condition — on the reader, the commitment, the claim class — each failed
   `guide-review` differently, because the discriminator is the artifact type and
   only a module can name that. See #21.
+- **What this does not fix:** the four untagged modules above. Their SHAPEs carry
+  no tag and they name no alternative, so the rule pair in `core.md` and
+  `register-declarative.md` is still unsatisfiable for them. Two rounds of trying
+  to write them a mechanism showed they don't have one — that is #21's problem,
+  not this change's.
+- `docs/contributing.md` gains a step, so a new module states its certainty form
+  rather than inheriting the gap.
 
 ## v0.5.0
 

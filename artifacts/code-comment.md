@@ -10,9 +10,6 @@ RULES:
 - A `TODO` carries an owner and a condition ("TODO(jonah): remove after v2 ships").
 - Match the surrounding comment density and idiom; don't over-annotate.
 - Note the non-obvious: invariants, gotchas, why the obvious approach was rejected.
-- Mark certainty with a `TODO`: state what the code and its contract support, and
-  route a claim you could not check into a `TODO(owner)` naming the check that
-  would settle it.
 
 SHAPE:
 ```

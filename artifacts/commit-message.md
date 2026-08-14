@@ -9,8 +9,6 @@ RULES:
 - Blank line, then body wrapped at 72 chars.
 - Body explains *why*, not *what* — the diff already shows what changed.
 - Reference the issue/ticket if the task names one; don't invent or hunt for one.
-- Mark certainty in prose: say what was measured, what was inferred, and what
-  remains unverified.
 
 SHAPE:
 ```
