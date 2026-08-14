@@ -6,8 +6,11 @@ APPLIES WHEN:  writing or revising a document that asks a buyer to commission
 scoped work.
 
 RULES:
-- Mark certainty this way, in place of tags: `firm` or `estimate` on the date
-  and the price, and an Assumptions entry for any claim you can't stand behind.
+- Mark certainty this way, in place of tags: `firm` or `estimate` on each date
+  and price the document states, and an Assumptions entry for any claim you
+  can't stand behind.
+- Attribute a claim about the buyer's business in prose, to where it came from
+  ("from your intake call").
 - Put the buyer's time in one table as person-hours, totalled; a process step
   repeats a row's hours and adds none.
 - Name each buyer-supplied input under "What I need from you" with what happens
@@ -30,7 +33,7 @@ SHAPE:
 - **Date:** <date>
 
 ## What you'll have at the end
-<the deliverable, and the date it lands> (firm | estimate)
+<the deliverable, and the date it lands (firm | estimate)>
 
 ## What it covers
 - **<outcome>** — <the question it answers>
@@ -39,7 +42,7 @@ SHAPE:
 | Your commitment | Person-hours |
 |---|---|
 | <item> | <n>h |
-| **Total** | **<n>h, plus any row's token** |
+| **Total** | **<total, carrying any row's token>** |
 
 ### The process
 - **<step>** — <who does what> *(your time: <n>h, if the step uses any)*
@@ -56,7 +59,7 @@ SHAPE:
 - **<risk>** <consequence, and who controls it>
 
 ## Price
-<price, or {{PRICE}} if the source material gives none> (firm | estimate),
+<price (firm | estimate), or {{PRICE}} if the source material gives none>,
 <fee basis>. Includes <what is in the price>.
 
 ## Next step

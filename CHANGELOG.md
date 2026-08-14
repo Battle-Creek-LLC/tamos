@@ -72,8 +72,15 @@ showing certainty.
   lands, the buyer's own time in person-hours totalled once, exclusions naming
   where the excluded work goes, and one next action the buyer can start today.
   It is the first artifact TAMOS ships that is addressed outside the working
-  session, which is why the certainty rule below needed to change.
+  session, which is why the certainty and citation rules below needed to
+  change.
 
+- **The citation rule permits an alternative too.** `file:line`, URL and
+  command output are all session-internal; none of them exists in a document
+  sent to a client, and `core.md` makes citations a slot that always counts.
+  A module may now name its own form — a proposal attributes a claim about
+  the buyer's business in prose, rather than leaking a repo path into a
+  priced offer.
 - **The certainty rule names a default and permits an alternative.** `State
   certainty: verified | believed | guessed` was written against agent→developer
   output, where every artifact TAMOS ships today lands. Read literally it demands
