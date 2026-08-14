@@ -9,8 +9,9 @@ RULES:
 - Mark certainty this way, in place of tags: `firm` or `estimate` on each date
   and price the document states, an Assumptions entry for any claim you can't
   stand behind, and nothing on the rest — unmarked means firm.
-- Cite this way, in place of file:line and URLs: attribute every world-claim in
-  prose to where it came from ("from your intake call").
+- Cite this way, in place of file:line and URLs: name where each world-claim
+  came from, in the sentence or the section carrying it ("from your intake
+  call").
 - Put the buyer's time in one table as person-hours, totalled; a process step
   repeats a row's hours and adds none.
 - Name each buyer-supplied input under "What I need from you" with what happens
@@ -40,6 +41,8 @@ source material gives none>
 - **<outcome>** — <the question it answers>
 
 ## How it runs
+<where these commitments came from>
+
 | Your commitment | Person-hours |
 |---|---|
 | <item> | <n>h |
@@ -53,7 +56,8 @@ source material gives none>
 
 ## Assumptions, exclusions and risks
 ### Assumptions
-- <a statement of fact the buyer can confirm or contradict>
+- <a statement of fact the buyer can confirm or contradict, and where it came
+  from>
 ### Exclusions
 <what is not covered; the engagement that covers it, where one is named>
 ### Risks
