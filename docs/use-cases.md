@@ -27,6 +27,7 @@ Everything below is a **producing skill**. Say the words; the module loads.
 | "review this spec", "check these requirements" | `spec-review` | requirements-quality findings — ambiguity, gaps, untestable clauses |
 | "research X and report back" | `research-report` | cited findings, assumptions marked |
 | "add a comment explaining this" | `code-comment` | a comment stating the constraint, not narrating the code |
+| "put together a proposal", "what would we quote", "write this up for the client" | `proposal` | one deliverable and its date, itemised buyer time, named exclusions, one next action |
 
 Any skill is also directly invocable by name: `/tamos:tldr`, `/tamos:pr-review`.
 Use that when you want the module for certain and don't want to phrase around it.
@@ -49,6 +50,7 @@ sessions.** Before this release the same suite scored 13/38 (34%).
 | `spec-review` | 2/2 | reliable (small n) |
 | `code-comment` | 2/2 | reliable *when you ask for it* — see below |
 | `pr-review` | 7/8 | reliable; the miss was an oblique mid-task ask |
+| `proposal` | — | unmeasured; added after the suite ran |
 
 Direction is `verified`; exact magnitudes are `believed` — n=2 per fixture, one
 model, and the prompts were written by the same person who wrote the fix.

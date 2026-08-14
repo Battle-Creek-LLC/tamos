@@ -42,7 +42,8 @@ claude -p "Reply with the first bullet of Tier 0 Core if visible, else exactly N
 
 Then confirm 9 `tamos:` skills register in a session: `tldr`, `pr-review`,
 `commit-message`, `status-update`, `elicitation`, `spec-review`,
-`research-report`, `code-comment`, `tamos-validate`. Fewer means a partial load.
+`research-report`, `code-comment`, `proposal`. Fewer means a partial load.
+`tamos-validate` registers alongside them as a command.
 
 ### Upgrading from v0.2.0 or earlier
 
@@ -63,7 +64,15 @@ They never worked — `${CLAUDE_PLUGIN_ROOT}` does not expand in a CLAUDE.md
 
 ## Unreleased
 
-Lets an artifact module name its own way of showing certainty.
+Adds the `proposal` module, and lets an artifact module name its own way of
+showing certainty.
+
+- **`artifacts/proposal.md` + the `proposal` skill.** Governs a document that
+  asks a buyer to commission scoped work: one deliverable and the date it
+  lands, the buyer's own time in person-hours totalled once, exclusions naming
+  where the excluded work goes, and one next action the buyer can start today.
+  It is the first artifact TAMOS ships that is addressed outside the working
+  session, which is why the certainty rule below needed to change.
 
 - **The certainty rule names a default and permits an alternative.** `State
   certainty: verified | believed | guessed` was written against agent→developer

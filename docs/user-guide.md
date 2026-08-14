@@ -21,7 +21,7 @@ the tag/SHA. Update with `/plugin marketplace update battle-creek`.
 | Component | Delivered as | Loads |
 |-----------|--------------|-------|
 | always-on layer (`core`, `register-declarative`, `AGENT-STYLE`) | `SessionStart` hook | every session, automatically |
-| 8 producing skills (`skills/`) | plugin skills, one per artifact module | when you ask for that artifact |
+| 9 producing skills (`skills/`) | plugin skills, one per artifact module | when you ask for that artifact |
 | 5 adversarial validators (`agents/`) | plugin subagents (auto-discovered) | when you run validation |
 | `/tamos-validate` (`commands/`) | slash command | on demand |
 | artifact modules (`artifacts/`) | reference files | pulled by the producing skill |
