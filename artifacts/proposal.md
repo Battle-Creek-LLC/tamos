@@ -7,8 +7,8 @@ scoped work.
 
 RULES:
 - Mark certainty this way, in place of tags: `firm` or `estimate` on each date
-  and price the document states, and an Assumptions entry for any claim you
-  can't stand behind.
+  and price the document states, an Assumptions entry for any claim you can't
+  stand behind, and nothing on the rest — unmarked means firm.
 - Cite this way, in place of file:line and URLs: attribute every world-claim in
   prose to where it came from ("from your intake call").
 - Put the buyer's time in one table as person-hours, totalled; a process step
