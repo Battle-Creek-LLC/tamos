@@ -9,8 +9,8 @@ RULES:
 - Mark certainty this way, in place of tags: `firm` or `estimate` on each date
   and price the document states, and an Assumptions entry for any claim you
   can't stand behind.
-- Attribute a claim about the buyer's business in prose, to where it came from
-  ("from your intake call").
+- Cite this way, in place of file:line and URLs: attribute every world-claim in
+  prose to where it came from ("from your intake call").
 - Put the buyer's time in one table as person-hours, totalled; a process step
   repeats a row's hours and adds none.
 - Name each buyer-supplied input under "What I need from you" with what happens
@@ -33,7 +33,8 @@ SHAPE:
 - **Date:** <date>
 
 ## What you'll have at the end
-<the deliverable, and the date it lands (firm | estimate)>
+<the deliverable, and the date it lands (firm | estimate), or {{DATE}} if the
+source material gives none>
 
 ## What it covers
 - **<outcome>** — <the question it answers>
