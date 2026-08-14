@@ -9,8 +9,8 @@ for prose. This page is the vocabulary that sits on that line.
 Two things are always on once the plugin is installed, with no words required:
 
 - **`core.md` + `register-declarative.md`** — every answer the agent gives you is
-  governed: answer first, certainty tagged (`verified` / `believed` / `guessed`),
-  no throat-clearing, failures reported plainly.
+  governed: answer first, certainty tagged on anything you'll act on (`verified`
+  / `believed` / `guessed`), no throat-clearing, failures reported plainly.
 - **`AGENT-STYLE.md`** — the registry, so the agent can find the right module.
 
 Everything below is a **producing skill**. Say the words; the module loads.

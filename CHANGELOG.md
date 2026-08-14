@@ -84,6 +84,31 @@ enforced-layer PR keep inheriting the whole backlog anyway.
 - `docs/user-guide.md` records that `README.md` and `docs/` sit outside the
   target list, so changes there get no verdict.
 
+## Unreleased
+
+Scopes the declarative register's certainty and citation rules to the reader
+they were written for. Both are hook-injected, so this changes the always-on set.
+
+- **Certainty applies to claims the reader will act on, and takes a different
+  form outside the session.** `State certainty: verified | believed | guessed`
+  was written against agent→developer output, where every artifact TAMOS ships
+  today lands. Read literally it demands a tag on every sentence, which no module
+  satisfies: `commit-message`, `code-comment`, `tldr` and `status-update` all
+  ship SHAPEs with no tag and state no delta, while `pr-review`, `spec-review`,
+  `elicitation` and `research-report` tag findings — the claims a reader acts on.
+  The rule now says that, and an artifact addressed outside the session expresses
+  an uncertain claim as a stated assumption instead of a tag.
+- **Citations take a prose source outside the session.** `file:line, URL, or
+  command output` have no realization in a document sent to a client, and
+  `core.md` makes citations a required slot, so the rule was unsatisfiable there
+  — the agent either leaks `notes/kickoff.md:18` to the reader or silently drops
+  a required slot.
+- **Why now:** #18 adds `proposal`, the first artifact addressed to a third
+  party. Four attempts to resolve this inside that module failed `guide-review`
+  in four different ways, and the validators twice prescribed fixing it here
+  instead. A module-local fix was also the one move `AGENT-STYLE.md` forbids —
+  a module cannot negate a rule it inherits.
+
 ## v0.5.0
 
 Scopes the validator gate to what a change actually caused.
