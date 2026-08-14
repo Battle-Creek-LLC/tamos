@@ -9,8 +9,8 @@ RULES:
 - Surface blockers first — they are what the reader can act on.
 - Say what changed since the last update, not the whole history.
 - End with the single next action and who owns it.
-- The state label carries certainty here, not a tag: a skipped check maps to
-  `in-progress`, never `done`.
+- Mark certainty with the state label — a skipped check maps to `in-progress`,
+  never `done` — and tag any claim the label doesn't cover.
 
 SHAPE:
 ```

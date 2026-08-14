@@ -99,12 +99,12 @@ changed rules are hook-injected, so this moves the always-on set.
   `status-update`'s "a skipped check maps to `in-progress`, never `done`" is a
   certainty mechanism, and `tldr`'s "add no claim the source didn't state" means
   it carries the source's certainty unchanged. Both now say so.
-- **The other two get one.** A commit body distinguishes what was measured from
-  what was inferred; an uncertain claim in a comment becomes a `TODO` with its
-  condition, which the module already requires an owner and condition for.
-- **Citations take a module-declared form.** `file:line, URL, or command output`
-  has no realization in every artifact, and `core.md` makes citations a required
-  slot, so the rule was unsatisfiable wherever those three forms don't exist.
+- **The other two get one.** A commit body says what was measured, what was
+  inferred, and what remains unverified; a comment states what the code and its
+  contract support and routes anything it could not check into a `TODO(owner)`
+  naming the check that would settle it.
+- **`docs/contributing.md` gains a step**, so the next module declares its
+  mechanism rather than inheriting the gap.
 - **Why now:** #18 adds `proposal`, the first artifact addressed to a reader
   outside the working session. Six attempts to resolve this with a Tier-1
   condition — on the reader, on the commitment, on the claim class — each failed
