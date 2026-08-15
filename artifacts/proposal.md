@@ -36,12 +36,13 @@ SHAPE:
 ## What you'll have at the end
 <the deliverable, and the date it lands (firm | estimate), or {{DATE}} if the
 source material gives none>
+<what it is built from>
 
 ## What it covers
-- **<outcome>** — <the question it answers>
+- **<outcome>** — <the question it answers> (<where its figures came from>)
 
 ## How it runs
-<where these commitments came from>
+<where the commitments below came from>
 
 | Your commitment | Person-hours |
 |---|---|
@@ -61,7 +62,7 @@ source material gives none>
 ### Exclusions
 <what is not covered; the engagement that covers it, where one is named>
 ### Risks
-- **<risk>** <consequence, and who controls it>
+- **<risk>** <consequence, who controls it, and where you learned of it>
 
 ## Price
 <price (firm | estimate), or {{PRICE}} if the source material gives none>,
