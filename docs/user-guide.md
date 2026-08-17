@@ -23,7 +23,7 @@ the tag/SHA. Update with `/plugin marketplace update battle-creek`.
 | always-on layer (`core`, `register-declarative`, `AGENT-STYLE`) | `SessionStart` hook | every session, automatically |
 | 8 producing skills (`skills/`) | plugin skills, one per artifact module | when you ask for that artifact |
 | 5 adversarial validators (`agents/`) | plugin subagents (auto-discovered) | when you run validation |
-| `/tamos-validate` (`commands/`) | slash command | on demand / in CI |
+| `/tamos-validate` (`commands/`) | slash command | on demand |
 | artifact modules (`artifacts/`) | reference files | pulled by the producing skill |
 
 > A plugin cannot inject text into your CLAUDE.md — but its `SessionStart` hook
@@ -104,27 +104,15 @@ Two workflows under `.github/workflows/`:
 
 - **`validate.yml`** (on every PR):
   - `structure` — `claude plugin validate . --strict`. Cheap, no API key.
-  - `guide-review` — runs `/tamos-validate` on changed enforced-layer files
-    only. Costs API tokens and a few minutes, so it is path-filtered and skips
-    PRs that don't touch the guide. It passes `--base`, so a PR fails only on
-    defects it introduced; the layer's pre-existing findings print as advisory.
-    A skipped run and a passing run both report green — check the log for which
-    you got.
 - **`release.yml`** (on a `v*` tag): validates structure, checks the tag matches
   `plugin.json` `version`, and publishes a GitHub release.
 
-**Required secret:** `ANTHROPIC_API_KEY` (repo settings → Secrets) for the
-`guide-review` job. The structural and release validation steps don't need it.
+**No secrets required.** Neither workflow calls a model, so no
+`ANTHROPIC_API_KEY` is needed and fork PRs run the same as branch PRs.
 
-**Fork PRs cannot run `guide-review`.** GitHub withholds repo secrets from
-`pull_request` runs originating from a fork, so the key reads empty however it is
-set and the job fails on the missing-key check. Push the branch to this repo and
-open the PR from here. Do not reach for `pull_request_target` — it hands the key
-to fork code, and this job runs `claude -p --permission-mode bypassPermissions`.
-
-If you'd rather not spend tokens in CI, delete the `guide-review` job and run
-`/tamos-validate` locally before pushing — the structural gate still protects
-the plugin manifest.
+**The validators do not run in CI.** Run `/tamos-validate` locally before
+pushing whenever you touch `core.md`, a register, `AGENT-STYLE.md`, or an
+artifact module. CI only protects the plugin manifest and layout.
 
 ## Cut a release
 
