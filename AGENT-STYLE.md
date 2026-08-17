@@ -24,6 +24,7 @@ module and the one rule that binds them.
 | 2    | `artifacts/code-comment.md`     | inline code comments                   | asked for a comment            |
 | 2    | `artifacts/elicitation.md`      | one decision put to a human            | soliciting a decision          |
 | 2    | `artifacts/tldr.md`             | compressing prose to terse structure   | summarizing existing output    |
+| 2    | `artifacts/proposal.md`         | offers of scoped work to a buyer       | drafting or pricing a proposal |
 
 Each module `artifacts/<name>.md` loads as the skill `<name>`; `/tamos:<name>`
 loads it directly. Vocabulary and measured reliability: `docs/use-cases.md`.

@@ -18,11 +18,14 @@ How to add or change a TAMOS module without breaking the cascade.
    refactor, don't carve out an exception.
 5. **Add one row** to the registry table in `AGENT-STYLE.md`.
 6. **Bind delivery.** Note in `APPLIES WHEN` the trigger that loads the module,
-   and wire it to the producing skill/tool.
+   then add `skills/<name>/SKILL.md` to pull it as step 0.
 7. **Declare the certainty mechanism.** One RULES line saying how this artifact
    shows how sure the author is — a `verified|believed|guessed` tag, or the
    marker your artifact uses instead. `register-declarative.md` requires one or
    the other.
+8. **Update every place that counts skills.** Add a vocabulary row to
+   `docs/use-cases.md`, and raise the count in `docs/user-guide.md` and in
+   the `CHANGELOG.md` upgrade check.
 
 ## Changing core or a register
 
