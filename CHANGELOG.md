@@ -62,10 +62,10 @@ They never worked — `${CLAUDE_PLUGIN_ROOT}` does not expand in a CLAUDE.md
 
 ---
 
-## Unreleased
+## v0.6.0
 
-Adds the `proposal` module, and lets an artifact module name its own way of
-showing certainty.
+Adds the `proposal` module, lets an artifact module name its own way of showing
+certainty, and takes the model out of CI.
 
 - **`artifacts/proposal.md` + the `proposal` skill.** Governs a document that
   asks a buyer to commission scoped work: one deliverable and the date it
@@ -101,6 +101,50 @@ showing certainty.
   not this change's.
 - `docs/contributing.md` gains a step, so a new module states its certainty form
   rather than inheriting the gap.
+
+### The validator gate (#19)
+
+v0.5.0 scoped the gate to the diff; two holes let an enforced-layer PR keep
+inheriting the whole backlog anyway.
+
+- **A finding outside a changed line now has to fail against the base.** The old
+  test blocked any finding citing a rule the diff changed. Every module inherits
+  `core.md` and both registers, so editing one put all nine modules in citing
+  range and re-opened the layer's standing findings — the exact failure v0.5.0
+  set out to fix. The test is now: read the cited rule as the base has it; if the
+  finding still stands, it pre-dates the PR.
+- **Only a high-severity blocking finding gates.** The old wording also counted
+  "a validator's FAIL verdict resting on a blocking finding", which cancelled the
+  severity threshold — the validators are adversarial and return FAIL whenever
+  they find anything, so a low-severity finding gated the same as a high one. One
+  run reported "32 findings blocking but below the high-severity threshold, so
+  they do not gate" and then emitted FAIL.
+- **Severity is defined.** Each validator was inventing its own scale. `high`
+  now requires naming the wrong artifact an agent would emit; two available
+  readings alone are `medium`.
+- `docs/user-guide.md` records that `README.md` and `docs/` sit outside the
+  target list, so changes there get no verdict.
+
+### CI no longer calls a model (#27)
+
+- **The `guide-review` job is gone.** It ran the five validators through
+  `claude -p` on every PR touching the enforced layer, spending API tokens and
+  several minutes per run, and it needed `ANTHROPIC_API_KEY` — which GitHub
+  withholds from fork PRs, so it could never pass on an outside contribution.
+- **This removes the only automated check on enforced-layer prose.** Run
+  `/tamos-validate` locally before pushing when you touch `core.md`, a register,
+  `AGENT-STYLE.md`, or an artifact module. Nothing in CI will catch it for you.
+- `validate.yml` keeps `structure` (`claude plugin validate . --strict`), a local
+  CLI check that needs no key. `release.yml` is unchanged.
+
+### Also
+
+- **research-report's Synthesis move rule is scoped** (#17). "Move any sentence"
+  named no section and "its own citation" dangled between the sentence being
+  moved and the bullet receiving it. Both are named now.
+- **`marketplace.json` carried `0.3.1` while `plugin.json` was at `0.5.0`.**
+  `release.yml` only checks the tag against `plugin.json`, so the catalog entry
+  drifted three releases without failing a build. Both read `0.6.0` here.
 
 ## v0.5.0
 
